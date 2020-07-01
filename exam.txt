@@ -1,0 +1,17 @@
+4.
+solrctl instancedir --generate /tmp/zomato_1
+gedit /tmp/zomato_1/conf/schema.xml
+solrctl instancedir --create zomato_1 /tmp/zomato_1
+solrctl collection --create zomato_1
+
+query1:Display all the restaurants name with Japanese cuisine
+query2: Display Restaurant name ,city and rating of the restaurants with indian currency and average cost is between 300 to 700
+query3:Display Restaurant name ,city,currency and votes of the restaurants whose votes are more than 5000
+quer4:Restaurants which have rating text as Very Good
+query5: restaurants which have rating greater than 4 and votes more than 5000
+query6: restaurants which are currently delivering online
+query7:facet on the country codes
+query8:restaurants with rating more than 4.5 in Banglore and Hyderabad
+query9:Latitude and longitudes of the restaurants with seafood cuisine in india
+query10:resturants which are rated poor or not rated are displayed
+
