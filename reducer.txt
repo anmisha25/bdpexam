@@ -1,0 +1,21 @@
+// extends the default Reducer class to take Text keyIn, FloatWritable ValueIn, Text keyOut and FloatWritable ValueOut.
+    public static class Reduce extends Reducer<Text, FloatWritable,Text, FloatWritable> {
+	// overriding the Reduce method that run for every key
+        public void reduce(Text key, Iterable<FloatWritable> values, Context context)
+                throws IOException, InterruptedException {
+	    // count to store the sum of all the values for each key
+            float sum = 0;
+		// varibale to increment with corresponding to values of particular key.
+            int l = 0;
+	    // Looping through the iterable values which are output of sort and shuffle phase
+            for (FloatWritable val : values) {
+		// Incrementing and calcluating sum for each key
+                l += 1;
+                sum += val.get();
+            }
+	    // Calcluating the average of the sum
+            sum = sum / l;
+	    // writing the key and value into the context
+            context.write(key, new FloatWritable(sum));
+        }
+    }
